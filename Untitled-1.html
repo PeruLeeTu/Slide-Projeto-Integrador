@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slides Projeto Integrador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .slide-container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .navigation {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <!-- Slides -->
+    <div class="slide active">
+        <img src="slide_1.png" alt="Slide 1">
+    </div>
+    <div class="slide">
+        <img src="slide_2.png" alt="Slide 2">
+    </div>
+    <div class="slide">
+        <img src="slide_3.png" alt="Slide 3">
+    </div>
+    <div class="slide">
+        <img src="slide_4.png" alt="Slide 4">
+    </div>
+    <div class="slide">
+        <img src="slide_5.png" alt="Slide 5">
+    </div>
+    <div class="slide">
+        <img src="slide_6.png" alt="Slide 6">
+    </div>
+    <div class="slide">
+        <img src="slide_7.png" alt="Slide 7">
+    </div>
+    <div class="slide">
+        <img src="slide_8.png" alt="Slide 8">
+    </div>
+    <div class="slide">
+        <img src="slide_9.png" alt="Slide 9">
+    </div>
+    <div class="slide">
+        <img src="slide_10.png" alt="Slide 10">
+    </div>
+    <div class="slide">
+        <img src="slide_11.png" alt="Slide 11">
+    </div>
+    <div class="slide">
+        <img src="slide_12.png" alt="Slide 12">
+    </div>
+
+    <!-- Navegação -->
+    <div class="navigation">
+        <button id="prevBtn" onclick="prevSlide()" disabled>Anterior</button>
+        <button id="nextBtn" onclick="nextSlide()">Próximo</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slides.length - 1;
+    }
+
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+</script>
+
+</body>
+</html>
